@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Dashboard Application</display-name>
+  
+  
+  <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.js</url-pattern>
+ </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.css</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.png</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.jpg</url-pattern>
+ </servlet-mapping>
+    <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.map</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.gif</url-pattern>
+ </servlet-mapping>
+<servlet>
+  	<servlet-name>mvc-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+ 	<servlet-name>mvc-dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+  </context-param>
+  
+  <listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+	
+	      <!-- The CORS filter with parameters -->
+  <filter>
+		
+		<filter-name>CORS</filter-name>
+		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+		
+		<!-- Note: All parameters are options, if omitted the CORS 
+		     Filter will fall back to the respective default values.
+		  -->
+		<init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+    		<param-value>es.tid.bluevia.m2mservice.security.CorsFilter</param-value>	  
+		</init-param>
+		<init-param>
+			<param-name>cors.allowGenericHttpRequests</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.allowOrigin</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.allowSubdomains</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.request.type</param-name>
+			<param-value>SIMPLE</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportedMethods</param-name>
+			<param-value>GET, HEAD, POST, OPTIONS, DELETE</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportedHeaders</param-name>
+			 <param-value>Origin, Content-Type, X-Requested-With, Access-Control-Allow-Origin, Session, Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportsCredentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.maxAge</param-name>
+			<param-value>360000</param-value>
+		</init-param>
+
+	</filter>
+
+	<filter-mapping>
+	<filter-name>CORS</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	 
+  <welcome-file-list>
+	<welcome-file>jsp/index.jsp</welcome-file>
+
+  </welcome-file-list>	
+
+</web-app>

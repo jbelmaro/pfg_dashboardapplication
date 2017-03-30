@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>M2M Service Application</display-name>
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+            classpath*:META-INF/spring/*.xml
+                      
+        </param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>CXFServlet</servlet-name>
+    <servlet-class>
+            org.apache.cxf.transport.servlet.CXFServlet
+        </servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CXFServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  
+
+  
+  <!-- Filter to secure Jersey (JAX-RS) services -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> 
+  <!-- The CORS filter with parameters -->
+  <filter>
+		
+		<filter-name>CORS</filter-name>
+		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+		
+		<!-- Note: All parameters are options, if omitted the CORS 
+		     Filter will fall back to the respective default values.
+		  -->
+		<init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+    		<param-value>es.tid.bluevia.m2mservice.security.CorsFilter</param-value>	  
+		</init-param>
+		<init-param>
+			<param-name>cors.allowGenericHttpRequests</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.allowOrigin</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.allowSubdomains</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.request.type</param-name>
+			<param-value>SIMPLE</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportedMethods</param-name>
+			<param-value>GET, HEAD, POST, OPTIONS, DELETE</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportedHeaders</param-name>
+			 <param-value>Origin, Content-Type, X-Requested-With, Access-Control-Allow-Origin, Session</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportsCredentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.maxAge</param-name>
+			<param-value>360000</param-value>
+		</init-param>
+
+	</filter>
+
+	<filter-mapping>
+	<filter-name>CORS</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+</web-app>

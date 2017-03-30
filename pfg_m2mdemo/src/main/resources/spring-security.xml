@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<http entry-point-ref="restAuthenticationEntryPoint"
+		use-expressions="true" >
+		<intercept-url pattern="/M2MRestService/alerts" access="permitAll"
+			method="POST" />
+		<intercept-url pattern="/M2MRestService/**" access="isAuthenticated()"
+			method="POST" />
+		<intercept-url pattern="/M2MRestService/**" access="isAuthenticated()"
+			method="DELETE" />
+
+
+		<sec:form-login authentication-success-handler-ref="SuccessHandler"
+			authentication-failure-handler-ref="FailureHandler" />
+		<logout delete-cookies="JSESSIONID" />
+	</http>
+
+	<beans:bean id="SuccessHandler"
+		class="es.tid.bluevia.m2mservice.security.AuthenticationSuccessHandler" />
+	<beans:bean id="FailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler" />
+	
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="1234" authorities="ROLE_ADMIN" />
+				<user name="user" password="1234" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

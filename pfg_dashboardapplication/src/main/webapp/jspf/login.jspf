@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="core"%>
+	<div class=loginDiv>
+	<section class="loginform cf">
+		<form id="login" method="post" accept-charset="utf-8">
+			<div>
+				<label for="j_username">Usuario</label> <input type="text"
+					name="j_username" placeholder="usuario" required> <label
+					for="j_password">Contraseña</label> <input type="password"
+					name="j_password" placeholder="contraseña" required>
+			</div>
+			<input class="button" type="submit" value="Login">
+		</form>
+	</section>
+</div>

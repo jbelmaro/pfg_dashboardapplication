@@ -1,0 +1,211 @@
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<grammars/>
+	<resources base="http://10.95.14.162:8080/M2MService/M2MRestService">
+		<resource path="/">
+			<resource path="alerts">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="text/xml">
+							<param name="request" style="plain" type="xs:string"/>
+						</representation>
+					</request>
+					<response status="204"/>
+				</method>
+			</resource>
+			<resource path="assets">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/json"/>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="assets/{assetId}">
+				<param name="assetId" style="template" type="xs:string"/>
+				<method name="DELETE">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="GET">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="assets/{assetId}/data">
+				<param name="assetId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request>
+						<param name="interval" style="query" type="xs:string"/>
+						<param name="sortBy" style="query" type="xs:string"/>
+						<param name="attribute" style="query" type="xs:string"/>
+						<param name="value" style="query" type="xs:string"/>
+						<param name="scope" style="query" type="xs:string"/>
+						<param name="property" style="query" type="xs:string"/>
+						<param name="param" style="query" type="xs:string"/>
+						<param name="name" style="query" type="xs:string"/>
+						<param name="limit" style="query" type="xs:string"/>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="devices">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/json">
+							<param name="request" style="plain" type="xs:string"/>
+						</representation>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="devices/{deviceId}">
+				<param name="deviceId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="devices/{deviceId}/data">
+				<param name="deviceId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request>
+						<param name="interval" style="query" type="xs:string"/>
+						<param name="sortBy" style="query" type="xs:string"/>
+						<param name="attribute" style="query" type="xs:string"/>
+						<param name="value" style="query" type="xs:string"/>
+						<param name="scope" style="query" type="xs:string"/>
+						<param name="property" style="query" type="xs:string"/>
+						<param name="param" style="query" type="xs:string"/>
+						<param name="name" style="query" type="xs:string"/>
+						<param name="limit" style="query" type="xs:string"/>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="models">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/json"/>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="models/{modelId}">
+				<param name="modelId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="models/{modelId}/data">
+				<param name="modelId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request>
+						<param name="interval" style="query" type="xs:string"/>
+						<param name="sortBy" style="query" type="xs:string"/>
+						<param name="attribute" style="query" type="xs:string"/>
+						<param name="value" style="query" type="xs:string"/>
+						<param name="scope" style="query" type="xs:string"/>
+						<param name="property" style="query" type="xs:string"/>
+						<param name="param" style="query" type="xs:string"/>
+						<param name="name" style="query" type="xs:string"/>
+						<param name="limit" style="query" type="xs:string"/>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="status">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/json">
+							<param name="request" style="plain" type="xs:string"/>
+						</representation>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="subscriptions">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/json">
+							<param name="request" style="plain" type="xs:string"/>
+						</representation>
+					</request>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="subscriptions/{subscriptionId}">
+				<param name="subscriptionId" style="template" type="xs:string"/>
+				<method name="GET">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+			<resource path="subscriptions/{subscriptionsId}">
+				<param name="subscriptionsId" style="template" type="xs:string"/>
+				<method name="DELETE">
+					<request/>
+					<response>
+						<representation mediaType="application/json"/>
+					</response>
+				</method>
+			</resource>
+		</resource>
+	</resources>
+</application>

@@ -1,0 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="core"%>
+
+    <footer> 
+        <p>Aplicación creada dentro del contexto del Proyecto TESLA subvencionado por ADE.</p>
+        <img align="left"  style="left: 0; margin-right: 10px; margin-top: 1px" src="<%=request.getContextPath() %>/resources/img/logos/logoTID2.png" height="36" hspace="0" vspace="0" border="0" alt="Telefonica I+D"  />
+		<img align="left" style="left: 0; margin-right: 10px; margin-top: 1px" src="<%=request.getContextPath() %>/resources/img/logos/Ade.jpg" height="36" alt="Ade"/>
+    </footer>
